@@ -23,7 +23,7 @@ jobs:
       - name: Build CV
         run: |
           cd cv
-          latexmk -pdf -interaction=nonstopmode -halt-on-error -usebiber -jobname=main main.tex
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -bibtex -jobname=main main.tex
 
       - name: Copy PDF into site assets
         run: |
