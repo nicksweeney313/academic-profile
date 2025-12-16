@@ -89,6 +89,7 @@ def work_to_entry(w):
     cited_by = w.get("cited_by_count")
     wtype = (w.get("type") or "").lower()
     journal = ((w.get("primary_location") or {}).get("source") or {}).get("display_name") or ""
+    journal = journal.replace("&", r"\&")
 
     # Decide category more robustly:
     # - journal article if OpenAlex says so OR if it has a journal/source name and a DOI
