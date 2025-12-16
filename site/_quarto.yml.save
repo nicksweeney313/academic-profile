@@ -2,7 +2,11 @@ project:
   type: website
 
 website:
-  title: "Nicholas P. Sweeney"
+  title: "site"
+  navbar:
+    left:
+   website:
+  title: "site"
   navbar:
     left:
       - href: index.qmd
@@ -13,6 +17,16 @@ website:
         text: CV
       - href: about.qmd
         text: About
+     roject:
+  type: website
+
+website:
+  title: "site"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
 
 format:
   html:

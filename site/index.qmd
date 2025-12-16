@@ -1,7 +1,28 @@
 ---
-title: "site"
+title: "Nicholas P. Sweeney"
 ---
 
-This is a Quarto website.
+## Economic geography · Regional economics · Place-based policy
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am a PhD researcher in the Department of Land Economy at the University of Cambridge. My work sits at the intersection of **economic geography**, **regional economics**, and **place-based policy**, with a focus on England.
+
+### Research interests
+- Devolution and multi-level governance
+- Spatial inequalities and local economic development
+- Political (dis)engagement in declining places
+- High streets, retail diversity, and spatial consumption patterns
+- Mobility, access to services, and health inequalities
+
+### Methods
+- Causal inference in applied microeconometrics (e.g. difference-in-differences, matching, IV)
+- Spatial data and geospatial analysis (QGIS / GIS workflows)
+- Reproducible research in **R** and **Python**
+
+### Selected work
+- See **Publications** for papers and working papers.
+- See **CV** for a full academic CV (PDF).
+
+### Contact
+- Email: `nicholas@npsweeney.co.uk` (or your current preferred email)
+- Department page: add link here
+- Google Scholar / ORCID / GitHub: add links here
