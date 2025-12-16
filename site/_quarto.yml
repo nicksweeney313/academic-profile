@@ -1,26 +1,23 @@
 project:
   type: website
+  output-dir: _site
 
 website:
   title: "Nicholas P. Sweeney"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - href: publications.qmd
-        text: Publications
-      - href: cv.qmd
-        text: CV
-      - href: about.qmd
-        text: About
+      - text: "About"
+        href: index.qmd
+      - text: "Publications"
+        href: publications.json
+      - text: "CV"
+        href: cv.qmd
+      - text: "Contact"
+        href: contact.qmd
+
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
     css: styles.css
-    toc: true
-
-
-
+    toc: false

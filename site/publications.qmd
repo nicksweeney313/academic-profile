@@ -1,0 +1,70 @@
+---
+title: "Publications"
+format:
+  html:
+    toc: false
+---
+
+<div class="card-lite">
+  <strong>Journal articles</strong> and related outputs. Click through for DOI where available.
+</div>
+
+<div id="pubs"></div>
+
+<script>
+(async function () {
+  const container = document.getElementById("pubs");
+
+  // Path to your JSON (adjust if you put it somewhere else)
+  const url = "./publications.json";
+
+  function escapeHtml(s) {
+    return String(s ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Could not load ${url} (${res.status})`);
+    const data = await res.json();
+
+    // Filter + sort newest first
+    const pubs = (data || [])
+      .filter(d => (d.keywords || []).includes("publication"))
+      .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+    if (!pubs.length) {
+      container.innerHTML = `<p>No publications found.</p>`;
+      return;
+    }
+
+    container.innerHTML = pubs.map(p => {
+      const title = escapeHtml(p.title);
+      const venue = escapeHtml(p.venue);
+      const year  = escapeHtml(p.year);
+      const authors = escapeHtml((p.authors || []).join(", "));
+      const doiUrl = p.doi_url ? escapeHtml(p.doi_url) : null;
+
+      const links = doiUrl
+        ? `<span class="links"><a href="${doiUrl}" target="_blank" rel="noopener">DOI</a></span>`
+        : "";
+
+      return `
+        <div class="pub">
+          <div class="title">${title}</div>
+          <div class="meta">${authors}${venue ? " — " + venue : ""}${year ? " (" + year + ")" : ""}</div>
+          ${links}
+        </div>
+      `;
+    }).join("");
+
+  } catch (err) {
+    container.innerHTML = `<p><strong>Error:</strong> ${escapeHtml(err.message)}</p>`;
+  }
+})();
+</script>
+

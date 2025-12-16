@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "CV",
     "section": "",
-    "text": "About this site"
+    "text": "Curriculum Vitae\n\nDownload CV (PDF)"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Email: nick@npsweeney.co.uk\n\nGitHub: …\nGoogle Scholar: …\nORCID: …"
   },
   {
     "objectID": "index.html",
@@ -14,17 +21,17 @@
     "text": "I am a PhD researcher in the Department of Land Economy at the University of Cambridge. My work sits at the intersection of economic geography, regional economics, and place-based policy, with a focus on England.\n\n\n\nDevolution and multi-level governance\nSpatial inequalities and local economic development\nPolitical (dis)engagement in declining places\nHigh streets, retail diversity, and spatial consumption patterns\nMobility, access to services, and health inequalities\n\n\n\n\n\nCausal inference in applied microeconometrics (e.g. difference-in-differences, matching, IV)\nSpatial data and geospatial analysis (QGIS / GIS workflows)\nReproducible research in R and Python\n\n\n\n\n\nSee Publications for papers and working papers.\nSee CV for a full academic CV (PDF).\n\n\n\n\n\nEmail: nicholas@npsweeney.co.uk (or your current preferred email)\nDepartment page: add link here\nGoogle Scholar / ORCID / GitHub: add links here"
   },
   {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "CV",
-    "section": "",
-    "text": "Curriculum Vitae\n\nDownload CV (PDF)"
-  },
-  {
     "objectID": "index.html#economic-geography-regional-economics-place-based-policy",
     "href": "index.html#economic-geography-regional-economics-place-based-policy",
     "title": "Nicholas P. Sweeney",
     "section": "",
     "text": "I am a PhD researcher in the Department of Land Economy at the University of Cambridge. My work sits at the intersection of economic geography, regional economics, and place-based policy, with a focus on England.\n\n\n\nDevolution and multi-level governance\nSpatial inequalities and local economic development\nPolitical (dis)engagement in declining places\nHigh streets, retail diversity, and spatial consumption patterns\nMobility, access to services, and health inequalities\n\n\n\n\n\nCausal inference in applied microeconometrics (e.g. difference-in-differences, matching, IV)\nSpatial data and geospatial analysis (QGIS / GIS workflows)\nReproducible research in R and Python\n\n\n\n\n\nSee Publications for papers and working papers.\nSee CV for a full academic CV (PDF).\n\n\n\n\n\nEmail: nicholas@npsweeney.co.uk (or your current preferred email)\nDepartment page: add link here\nGoogle Scholar / ORCID / GitHub: add links here"
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Journal articles and related outputs. Click through for DOI where available."
   }
 ]

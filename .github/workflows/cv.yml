@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "cv/**"
+      - ".github/workflows/cv.yml"
   workflow_dispatch:
 
 permissions:

@@ -1,1 +1,213 @@
-/* css styles */
+/* =========================
+   Premium academic styling
+   Works well with Quarto + Bootstrap themes (e.g. cosmo)
+   ========================= */
+
+/* --- Fonts (safe defaults; you can add a Google Font later) --- */
+:root{
+  --bg: #f6f4f1;              /* warm paper */
+  --panel: #ffffff;
+  --text: #16181d;
+  --muted: #505766;
+  --border: rgba(20, 20, 20, 0.10);
+
+  --accent: #2a5bd7;          /* restrained blue */
+  --accent-2: #0f766e;        /* optional secondary */
+  --shadow: 0 10px 30px rgba(10, 20, 30, 0.08);
+
+  --radius: 14px;
+  --maxw: 860px;
+}
+
+/* Page base */
+html { scroll-behavior: smooth; }
+
+body{
+  background: radial-gradient(1200px 600px at 15% -10%, rgba(42,91,215,0.10), transparent 55%),
+              radial-gradient(900px 500px at 90% 0%, rgba(15,118,110,0.08), transparent 55%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 17px;
+
+  /* If you later load IBM Plex Sans or Inter, this will pick it up */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Constrain content width & spacing */
+main.content{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem 3rem;
+}
+
+/* Make paragraphs feel more “crafted” */
+p{
+  margin: 0 0 1.05rem;
+  color: rgba(22, 24, 29, 0.92);
+}
+
+/* Links: crisp but not shouty */
+a{
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+a:hover{
+  text-decoration: underline;
+}
+
+/* Headings: professional rhythm */
+h1, h2, h3{
+  letter-spacing: -0.02em;
+  margin-top: 2.2rem;
+  margin-bottom: 0.9rem;
+}
+h1{
+  font-size: 2.35rem;
+  line-height: 1.15;
+  margin-top: 0.5rem;
+}
+h2{
+  font-size: 1.55rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.35rem;
+}
+h3{
+  font-size: 1.12rem;
+  color: var(--muted);
+}
+
+/* A subtle “lead” paragraph if you add {.lead} to the first paragraph */
+.lead{
+  font-size: 1.08rem;
+  color: rgba(22, 24, 29, 0.88);
+}
+
+/* =========================
+   Navbar polish
+   ========================= */
+
+.navbar{
+  background: rgba(246, 244, 241, 0.72) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand{
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.nav-link{
+  color: rgba(22,24,29,0.78) !important;
+  font-weight: 520;
+  padding: 0.55rem 0.75rem !important;
+  border-radius: 10px;
+}
+.nav-link:hover{
+  background: rgba(42,91,215,0.08);
+  color: rgba(22,24,29,0.92) !important;
+}
+.nav-link.active{
+  background: rgba(42,91,215,0.12);
+  color: rgba(22,24,29,0.95) !important;
+}
+
+/* =========================
+   “Card” blocks you can use anywhere
+   ========================= */
+
+.card-lite{
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.15rem 1.15rem;
+  margin: 1rem 0 1.15rem;
+}
+
+.card-lite p:last-child{ margin-bottom: 0; }
+
+/* Make inline buttons/links look premium */
+a.btn-lite{
+  display: inline-block;
+  padding: 0.55rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 6px 18px rgba(10,20,30,0.06);
+  color: rgba(22,24,29,0.92);
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  margin-top: 0.25rem;
+}
+a.btn-lite:hover{
+  border-color: rgba(42,91,215,0.35);
+  transform: translateY(-1px);
+  transition: 120ms ease;
+  text-decoration: none;
+}
+
+/* =========================
+   Publications formatting helpers
+   ========================= */
+
+.pub{
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 8px 22px rgba(10,20,30,0.06);
+  margin: 0.85rem 0;
+}
+
+.pub .title{
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.pub .meta{
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.pub .links a{
+  margin-right: 0.65rem;
+  font-weight: 650;
+}
+
+/* =========================
+   CV iframe
+   ========================= */
+
+iframe{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+/* =========================
+   Code blocks (if you have any)
+   ========================= */
+
+pre{
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 22px rgba(10,20,30,0.06);
+}
+
+/* =========================
+   Mobile tweaks
+   ========================= */
+
+@media (max-width: 600px){
+  body{ font-size: 16px; }
+  h1{ font-size: 1.95rem; }
+  main.content{ padding: 1.6rem 1rem 2.5rem; }
+  .card-lite{ padding: 1rem; }
+}
