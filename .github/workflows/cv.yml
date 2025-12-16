@@ -18,12 +18,12 @@ jobs:
       - name: Install TeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended latexmk
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended biber latexmk
 
       - name: Build CV
         run: |
           cd cv
-          latexmk -pdf -interaction=nonstopmode -halt-on-error -jobname=main main.tex
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -usebiber -jobname=main main.tex
 
       - name: Copy PDF into site assets
         run: |
