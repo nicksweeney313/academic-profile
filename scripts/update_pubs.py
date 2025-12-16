@@ -2,6 +2,8 @@ import json, re
 from pathlib import Path
 import requests
 import bibtexparser
+from datetime import date
+
 
 ORCID = Path("data/orcid.txt").read_text().strip()
 OPENALEX = "https://api.openalex.org/works"
@@ -11,6 +13,22 @@ OUT_AUTO_WPS  = Path("bib/auto_working_papers.bib")
 OUT_JSON      = Path("site/publications.json")
 
 MANUAL_BIBS = [Path("bib/manual_publications.bib"), Path("bib/manual_working_papers.bib")]
+
+
+def parse_date(d: str):
+    # OpenAlex gives YYYY-MM-DD; sometimes missing
+    if not d:
+        return date.min
+    try:
+        y, m, dd = d.split("-")
+        return date(int(y), int(m), int(dd))
+    except Exception:
+        return date.min
+
+def norm_doi(doi: str) -> str:
+    doi = (doi or "").strip().lower()
+    return doi.replace("https://doi.org/", "").replace("http://doi.org/", "")
+
 
 def normalise_title(t: str) -> str:
     t = (t or "").lower()
@@ -72,14 +90,27 @@ def work_to_entry(w):
     wtype = (w.get("type") or "").lower()
     journal = ((w.get("primary_location") or {}).get("source") or {}).get("display_name") or ""
 
-    if wtype == "journal-article":
+    # Decide category more robustly:
+    # - journal article if OpenAlex says so OR if it has a journal/source name and a DOI
+    # - otherwise treat as working paper / preprint / other
+    is_journal_article = (wtype == "journal-article")
+    has_journal = bool(journal)
+    has_doi = bool(doi_clean)
+
+    if is_journal_article or (has_journal and has_doi):
         keywords, entrytype = ["publication"], "article"
     else:
         keywords, entrytype = ["workingpaper"], "unpublished"
 
     first_author = (w.get("authorships") or [{}])[0].get("author", {}).get("display_name", "author")
     surname = (first_author.split() or ["author"])[-1].lower()
-    key = f"{surname}{year}{re.sub(r'[^a-z0-9]+','', normalise_title(title)[:24])}"
+
+    if doi_clean:
+        # DOI-based key: stable + unique across title variants
+        doi_key = re.sub(r"[^a-z0-9]+", "", doi_clean.lower())
+        key = f"{surname}{year}{doi_key[:32]}"
+    else:
+        key = f"{surname}{year}{re.sub(r'[^a-z0-9]+','', normalise_title(title)[:24])}"
 
     entry = {"ENTRYTYPE": entrytype, "ID": key, "title": title, "author": authors_to_bib(w.get("authorships"))}
     if year: entry["year"] = str(year)
@@ -115,22 +146,61 @@ def write_bib(entries, path: Path):
 def main():
     if not ORCID:
         raise SystemExit("Put your ORCID in data/orcid.txt")
+
     manual_dois, manual_titles = read_manual_keys()
     works = fetch(ORCID)
 
-    pubs, wps, web_items = [], [], []
+    pub_pairs, wp_pairs = [], []
+
     for w in works:
         entry, web = work_to_entry(w)
-        if web["doi"] and web["doi"] in manual_dois:
+
+        # manual wins: if manual has same DOI or title, skip auto version
+        if web.get("doi") and web["doi"] in manual_dois:
             continue
-        if normalise_title(web["title"]) in manual_titles:
+        if normalise_title(web.get("title", "")) in manual_titles:
             continue
-        (pubs if "publication" in web["keywords"] else wps).append(entry)
-        web_items.append(web)
+
+        if "publication" in (web.get("keywords") or []):
+            pub_pairs.append((entry, web))
+        else:
+            wp_pairs.append((entry, web))
+
+    def dedupe_keep_newest(pairs):
+        """
+        pairs: list of (entry_dict, web_dict)
+        Keeps newest by web['date'] within duplicates.
+        Duplicate rule: same DOI if present, else same normalised title.
+        """
+        best = {}  # key -> (entry, web)
+        for entry, web in pairs:
+            doi = norm_doi(web.get("doi", ""))
+            tkey = normalise_title(web.get("title", ""))
+            key = f"doi:{doi}" if doi else f"title:{tkey}"
+
+            cur = best.get(key)
+            if cur is None:
+                best[key] = (entry, web)
+            else:
+                _, cur_web = cur
+                if parse_date(web.get("date")) > parse_date(cur_web.get("date")):
+                    best[key] = (entry, web)
+
+        out = list(best.values())
+        out.sort(key=lambda ew: parse_date(ew[1].get("date")), reverse=True)
+        return out
+
+    pub_pairs = dedupe_keep_newest(pub_pairs)
+    wp_pairs = dedupe_keep_newest(wp_pairs)
+
+    pubs = [e for e, _ in pub_pairs]
+    wps  = [e for e, _ in wp_pairs]
+    web_items = [w for _, w in (pub_pairs + wp_pairs)]
 
     write_bib(pubs, OUT_AUTO_PUBS)
     write_bib(wps, OUT_AUTO_WPS)
     OUT_JSON.write_text(json.dumps(web_items, indent=2), encoding="utf-8")
+
     print(f"Wrote {OUT_AUTO_PUBS} ({len(pubs)})")
     print(f"Wrote {OUT_AUTO_WPS} ({len(wps)})")
     print(f"Wrote {OUT_JSON} ({len(web_items)})")
