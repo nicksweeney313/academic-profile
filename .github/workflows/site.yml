@@ -1,0 +1,52 @@
+name: Update publications and deploy site
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Mondays 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python deps
+        run: |
+          python -m pip install -U pip
+          pip install -r requirements.txt
+
+      - name: Update publications
+        run: |
+          python scripts/update_pubs.py
+
+      - name: Commit updated files
+        run: |
+          git config user.name "pubs-bot"
+          git config user.email "pubs-bot@users.noreply.github.com"
+          git add bib/ site/publications.json
+          git commit -m "Auto-update publications" || true
+          git push
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render site
+        run: |
+          cd site
+          quarto render
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site/_site
+
