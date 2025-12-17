@@ -17,15 +17,18 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          
+      - name: Install TeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended biber latexmk
 
-      # ---- Build the CV (LaTeX) ----
-      - name: Build CV PDF
-        uses: xu-cheng/latex-action@v3
-        with:
-          working_directory: cv
-          root_file: main.tex
+      - name: Build CV
+        run: |
+          cd cv
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -bibtex -jobname=main main.tex
 
-      - name: Copy CV into site assets
+      - name: Copy PDF into site assets
         run: |
           mkdir -p site/assets
           cp cv/main.pdf site/assets/cv.pdf
