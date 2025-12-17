@@ -6,28 +6,29 @@ format:
 ---
 
 ## Economic geography · Regional inequalities · Institutions
+<div class="bio-card">
+  <img
+    src="assets/DSC_1243.JPG"
+    alt="Nicholas P. Sweeney"
+    class="bio-photo"
+    loading="lazy"
+    decoding="async"
+  >
 
-<div class="profile-wrap">
-  <a href="assets/DSC_1243.JPG" target="_blank" rel="noopener" class="profile-link">
-    <img src="assets/DSC_1243.JPG"
-         alt="Nicholas P. Sweeney"
-         class="profile-photo"
-         loading="lazy"
-         decoding="async">
-  </a>
+  <div class="bio-text">
+    <h2 class="bio-title">Bio</h2>
+
+    <p><em>Nicholas P. Sweeney</em> is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.</p>
+
+    <p>His research specialises in <em>XXX</em>.</p>
+
+    <p>He joined the University of Manchester in 2025 from the University of Cambridge, after a PhD entitled <em>Devolution and Space in England: Empirical Essays on Economic Growth, Democratic Engagement and Health</em>. The thesis comprised three solo-authored papers, submitted in under three years, and subsequently published in leading journals (<em>Urban Studies</em>, <em>Political Geography</em>, and <em>Social Science &amp; Medicine</em>).</p>
+
+    <p>Nicholas also completed his undergraduate and master’s degrees at the University of Cambridge, specialising in Economic Geography. His earlier academic achievements include a master’s degree with Distinction, including a mark of 87% in Research Methods, and—at undergraduate level—the highest overall marks in his cohort and the award for Best Final-Year Dissertation.</p>
+
+    <p>Outside of academic work, Nicholas has focused on contributing in policy domains, holding positions at the OECD, working on the ASEAN Development Outlook Report 2020–2025 and MillNET_i.</p>
+  </div>
 </div>
-
-### Bio
-
-*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.
-
-His research specialises in *XXX*.
-
-He joined the University of Manchester in 2025 from the University of Cambridge, after a PhD entitled 'Devolution and Space in England: Empirical Essays on Economic Growth, Democratic Engagement and Health'. The thesis comprised three solo-authored papers, submitted in under three years, and subsequently published in leading journals (*Urban Studies*, *Political Geography*, and *Social Science & Medicine*).
-
-Nicholas also completed his undergraduate and master’s degrees at the University of Cambridge, specialising in Economic Geography. His earlier academic achievements include a master’s degree with Distinction, including a mark of 87% in Research Methods, and—at undergraduate level—the highest overall marks in his cohort and the award for Best Final-Year Dissertation.
-
-Outside of academic work, Nicholas has focused on contributing in policy domains, holding positions at the OECD, working on the ASEAN Development Outlook Report 2020-2025 and MillNET_i.
 
 
 ### Research interests
