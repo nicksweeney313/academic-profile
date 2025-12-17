@@ -24,3 +24,6 @@ site/.nojekyll
 venv/
 __pycache__/
 *.pyc
+
+# Quarto build output
+site/_site/
