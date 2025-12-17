@@ -8,10 +8,12 @@ format:
 ## Economic geography · Regional inequalities · Institutions
 
 <div class="profile-wrap">
-  <a href="assets/DSC_1243.jpg" target="_blank" rel="noopener" class="profile-link">
-    <img src="assets/DSC_1243.jpg"
+  <a href="assets/DSC_1243.JPG" target="_blank" rel="noopener" class="profile-link">
+    <img src="assets/DSC_1243.JPG"
          alt="Nicholas P. Sweeney"
-         class="profile-photo">
+         class="profile-photo"
+         loading="lazy"
+         decoding="async">
   </a>
 </div>
 

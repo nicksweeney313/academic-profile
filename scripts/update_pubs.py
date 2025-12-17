@@ -8,8 +8,8 @@ from datetime import date
 ORCID = Path("data/orcid.txt").read_text().strip()
 OPENALEX = "https://api.openalex.org/works"
 
-OUT_AUTO_PUBS = Path("bib/auto_publications.bib")
-OUT_AUTO_WPS  = Path("bib/auto_working_papers.bib")
+OUT_AUTO_PUBS = Path("bib/publications.bib")
+OUT_AUTO_WPS  = Path("bib/working_papers.bib")
 OUT_JSON      = Path("site/publications.json")
 
 MANUAL_BIBS = [Path("bib/manual_publications.bib"), Path("bib/manual_working_papers.bib")]
