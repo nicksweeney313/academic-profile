@@ -49,9 +49,6 @@ jobs:
           test -f cv/main.pdf
           cp cv/main.pdf site/assets/cv.pdf
 
-
-
-
   deploy:
     runs-on: ubuntu-latest
     needs: build-cv
