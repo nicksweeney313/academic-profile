@@ -4,6 +4,12 @@
 
 \usepackage[backend=biber,style=authoryear,sorting=dateydnt,maxbibnames=99]{biblatex}
 
+
+\addbibresource{../bib/publications.bib}
+\addbibresource{../bib/working_papers.bib}
+
+\providecommand*{\addliteral}[1]{\addpunct{#1}}
+
 % --- Sort newest first by full date (YYYY-MM-DD), then author, then title
 \DeclareSortingScheme{dateydnt}{%
   \sort[direction=descending]{%
@@ -77,9 +83,6 @@
 \renewbibmacro*{date+extradate}{%
   \printlabeldateextra
 }
-
-\addbibresource{../bib/publications.bib}
-\addbibresource{../bib/working_papers.bib}
 
 % --- Name format: Surname, N. P.
 \DeclareNameAlias{author}{family-given}
