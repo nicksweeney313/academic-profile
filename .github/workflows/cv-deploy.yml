@@ -23,20 +23,32 @@ jobs:
 
       - name: Build CV
         run: |
+          set -e
           cd cv
+
+          # Clean (optional but helps)
+          rm -f main.aux main.bbl main.bcf main.blg main.log main.out main.run.xml main.toc main.pdf || true
+
           # 1st pass
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
 
-          # Run bibliography tool if needed (biblatex -> biber; classic -> bibtex)
-          if grep -q "\\\\usepackage\\(\\[.*\\]\\)\\?{biblatex}" main.tex; then
-            biber main || true
-          else
+          # Bibliography (biblatex -> biber; classic -> bibtex)
+          if grep -qE '\\usepackage(\[[^]]*\])?\{biblatex\}' main.tex; then
+            biber main
+          elif grep -qE '\\bibliography\{|\\addbibresource\{' main.tex; then
             bibtex main || true
           fi
 
           # Final passes
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
+
+      - name: Copy CV PDF into site assets
+        run: |
+          mkdir -p site/assets
+          test -f cv/main.pdf
+          cp cv/main.pdf site/assets/cv.pdf
+
 
 
 
