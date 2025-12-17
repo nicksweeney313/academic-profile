@@ -84,11 +84,13 @@ h3{
 }
 
 /* ---- Navbar polish (Quarto/Bootstrap) ---- */
+/* Fix the "background runs out" seam: remove translucent/blur navbar */
 .navbar{
-  background: rgba(246, 244, 241, 0.72) !important;
-  backdrop-filter: blur(10px);
+  background: #eef4ff !important;   /* match your page bg */
+  backdrop-filter: none !important;
   border-bottom: 1px solid var(--border);
 }
+
 
 .navbar-brand{
   font-weight: 650;
