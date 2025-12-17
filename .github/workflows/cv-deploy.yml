@@ -26,7 +26,7 @@ jobs:
       - name: Build CV
         run: |
           cd cv
-          latexmk -pdf -interaction=nonstopmode -halt-on-error -usebiber main.tex
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -use-biber main.tex
 
 
       - name: Copy PDF into site assets
