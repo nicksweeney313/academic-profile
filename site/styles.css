@@ -123,20 +123,17 @@ li{ margin-bottom: 0.35rem; }
 }
 
 .bio-photo{
-  width: 100%;
-  max-width: 190px;
-  aspect-ratio: 1 / 1;
+  width: 180px;
+  height: 180px;
+
   object-fit: cover;
   border-radius: 18px;
   border: 1px solid var(--border);
-  display: block;
-}
 
-.bio-title{
-  margin-top: 0.1rem;
-  margin-bottom: 0.75rem;
-  border-bottom: none;
-  padding-bottom: 0;
+  /* CRITICAL anti-blur fixes */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .bio-text p:last-child{ margin-bottom: 0; }

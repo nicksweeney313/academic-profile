@@ -8,7 +8,16 @@ format:
 ## Economic geography · Regional inequalities · Institutions
 
 ::: {.bio-card}
-![](assets/DSC_1243.JPG){.bio-photo alt="Nicholas P. Sweeney" loading="lazy"}
+```{=html}
+<img
+  src="assets/DSC_1243.JPG"
+  srcset="assets/DSC_1243.JPG 1x, assets/DSC_1243.JPG 2x"
+  alt="Nicholas P. Sweeney"
+  class="bio-photo"
+  loading="eager"
+  decoding="async"
+/>
+```
 
 ::: {.bio-text}
 ## Bio {.bio-title}
