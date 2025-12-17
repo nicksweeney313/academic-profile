@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Install TeX
         run: |
           sudo apt-get update
@@ -26,7 +26,8 @@ jobs:
       - name: Build CV
         run: |
           cd cv
-          latexmk -pdf -interaction=nonstopmode -halt-on-error -bibtex -jobname=main main.tex
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -usebiber main.tex
+
 
       - name: Copy PDF into site assets
         run: |
