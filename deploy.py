@@ -69,3 +69,4 @@ if __name__ == "__main__":
     except subprocess.CalledProcessError as e:
         print("\n❌ Command failed:", e, file=sys.stderr)
         sys.exit(e.returncode)
+
