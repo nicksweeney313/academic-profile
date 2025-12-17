@@ -3,27 +3,37 @@
    Mobile-first, Quarto/Bootstrap-friendly
    ========================= */
 
+html, body{
+  height: 100%;
+}
+
+body{
+  min-height: 100vh;
+}
+
 /* ---- Design tokens ---- */
 :root{
-  --bg: #f6f4f1;                       /* warm paper */
+  --bg: #eef4ff;                 /* light blue base */
   --panel: rgba(255,255,255,0.92);
-  --text: #16181d;
-  --muted: #505766;
-  --border: rgba(20, 20, 20, 0.10);
+  --text: #111827;
+  --muted: #4b5563;
+  --border: rgba(17, 24, 39, 0.10);
 
-  --accent: #2a5bd7;
-  --shadow: 0 10px 30px rgba(10, 20, 30, 0.08);
+  --accent: #2563eb;             /* crisp blue */
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
 
   --radius: 16px;
   --maxw: 900px;
 }
 
+
 html{ scroll-behavior: smooth; }
 
 body{
   background:
-    radial-gradient(1200px 600px at 15% -10%, rgba(42,91,215,0.10), transparent 55%),
-    radial-gradient(900px 500px at 90% 0%, rgba(15,118,110,0.08), transparent 55%),
+    radial-gradient(1100px 600px at 12% -10%, rgba(37,99,235,0.16), transparent 55%),
+    radial-gradient(900px 500px at 88% 0%, rgba(99,102,241,0.12), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.40), rgba(255,255,255,0.00)),
     var(--bg);
   color: var(--text);
   line-height: 1.75;
@@ -32,11 +42,10 @@ body{
                Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
+
 /* ---- Layout ---- */
 main.content{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 2.25rem 1.25rem 3rem;
+  padding: 2.25rem 1.25rem 4.5rem;
 }
 
 /* ---- Type ---- */
