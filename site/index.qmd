@@ -7,23 +7,18 @@ format:
 
 ## Economic geography · Regional inequalities · Institutions
 
-<div class="bio-card">
-  <img
-    src="assets/DSC_1243.JPG"
-    alt="Nicholas P. Sweeney"
-    class="bio-photo"
-    loading="lazy"
-    decoding="async"
-  >
+::: {.bio-card}
+![](assets/DSC_1243.JPG){.bio-photo alt="Nicholas P. Sweeney" loading="lazy"}
 
-  <div class="bio-text">
-    <h2 class="bio-title">Bio</h2>
+::: {.bio-text}
+## Bio {.bio-title}
 
-    <p><em>Nicholas P. Sweeney</em> is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.</p>
+*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.
 
-    <p>His research specialises in <em>XXX</em>.</p>
-  </div>
-</div>
+His research specialises in *XXX*.
+:::
+:::
+
 
 
 
