@@ -1,9 +1,11 @@
 /* =========================
-   Professional academic theme
+   Nick Sweeney — clean academic theme
+   Mobile-first, Quarto/Bootstrap-friendly
    ========================= */
 
+/* ---- Design tokens ---- */
 :root{
-  --bg: #f6f4f1;              /* warm paper */
+  --bg: #f6f4f1;                       /* warm paper */
   --panel: rgba(255,255,255,0.92);
   --text: #16181d;
   --muted: #505766;
@@ -16,7 +18,7 @@
   --maxw: 900px;
 }
 
-html { scroll-behavior: smooth; }
+html{ scroll-behavior: smooth; }
 
 body{
   background:
@@ -30,14 +32,14 @@ body{
                Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* Constrain content width */
+/* ---- Layout ---- */
 main.content{
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.25rem 1.25rem 3rem;
 }
 
-/* Typography */
+/* ---- Type ---- */
 p{
   margin: 0 0 1.05rem;
   color: rgba(22, 24, 29, 0.92);
@@ -52,8 +54,7 @@ a:hover{ text-decoration: underline; }
 
 h1, h2, h3{
   letter-spacing: -0.02em;
-  margin-top: 2.2rem;
-  margin-bottom: 0.9rem;
+  margin: 2.2rem 0 0.9rem;
 }
 
 h1{
@@ -73,7 +74,7 @@ h3{
   color: var(--muted);
 }
 
-/* Navbar polish (Quarto/Bootstrap) */
+/* ---- Navbar polish (Quarto/Bootstrap) ---- */
 .navbar{
   background: rgba(246, 244, 241, 0.72) !important;
   backdrop-filter: blur(10px);
@@ -100,7 +101,7 @@ h3{
   color: rgba(22,24,29,0.95) !important;
 }
 
-/* Lists */
+/* ---- Lists ---- */
 ul, ol{ padding-left: 1.2rem; }
 li{ margin-bottom: 0.35rem; }
 
@@ -122,15 +123,16 @@ li{ margin-bottom: 0.35rem; }
   box-shadow: var(--shadow);
 }
 
+/* Keep the photo crisp on Retina/Safari by avoiding fractional scaling */
 .bio-photo{
   width: 180px;
   height: 180px;
+  display: block;
 
   object-fit: cover;
   border-radius: 18px;
   border: 1px solid var(--border);
 
-  /* CRITICAL anti-blur fixes */
   transform: translateZ(0);
   backface-visibility: hidden;
   image-rendering: -webkit-optimize-contrast;
@@ -138,24 +140,8 @@ li{ margin-bottom: 0.35rem; }
 
 .bio-text p:last-child{ margin-bottom: 0; }
 
-/* Mobile: stack */
-@media (max-width: 750px){
-  body{ font-size: 16px; }
-  h1{ font-size: 1.95rem; }
-
-  main.content{ padding: 1.6rem 1rem 2.5rem; }
-
-  .bio-card{
-    grid-template-columns: 1fr;
-    padding: 1.05rem;
-  }
-  .bio-photo{
-    max-width: 150px;
-  }
-}
-
 /* =========================
-   “Card-lite” helper (optional)
+   Utility cards + pub blocks
    ========================= */
 .card-lite{
   background: var(--panel);
@@ -166,7 +152,6 @@ li{ margin-bottom: 0.35rem; }
   margin: 1rem 0 1.15rem;
 }
 
-/* Publications helper (optional) */
 .pub{
   padding: 0.95rem 1rem;
   border: 1px solid var(--border);
@@ -186,4 +171,25 @@ iframe{
   border-radius: var(--radius);
   background: #fff;
   box-shadow: var(--shadow);
+}
+
+/* =========================
+   Mobile responsiveness
+   ========================= */
+@media (max-width: 750px){
+  body{ font-size: 16px; }
+  h1{ font-size: 1.95rem; }
+
+  main.content{ padding: 1.6rem 1rem 2.5rem; }
+
+  .bio-card{
+    grid-template-columns: 1fr;
+    padding: 1.05rem;
+  }
+
+  /* keep fixed size to stay crisp; align nicely on small screens */
+  .bio-photo{
+    width: 150px;
+    height: 150px;
+  }
 }
