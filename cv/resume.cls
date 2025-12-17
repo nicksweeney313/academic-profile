@@ -25,7 +25,7 @@
 \usepackage[parfill]{parskip} % Remove paragraph indentation
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{ifthen} % Required for ifthenelse statements
-\usepackage{csquotes}
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -49,7 +49,6 @@
 \let \@addressone \relax
 \let \@addresstwo \relax
 \let \@addressthree \relax
-
 % \address command can be used to set the first, second, and third address (last 2 optional)
 \def \address #1{
   \@ifundefined{@addresstwo}{

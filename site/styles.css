@@ -211,3 +211,47 @@ pre{
   main.content{ padding: 1.6rem 1rem 2.5rem; }
   .card-lite{ padding: 1rem; }
 }
+
+/* tighten the big title area */
+.quarto-title-block {
+  padding-top: 1rem !important;
+  padding-bottom: .5rem !important;
+  margin-bottom: .25rem !important;
+}
+.quarto-title-block .title {
+  margin-bottom: .25rem !important;
+}
+
+
+.profile-wrap {
+  float: right;
+  margin: 0 0 1rem 1.25rem;
+}
+
+.profile-photo {
+  width: 300px;              /* was ~180 */
+  max-width: 45vw;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.14);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.profile-link { display: inline-block; }
+
+.profile-link:hover .profile-photo {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .profile-wrap {
+    float: none;
+    text-align: center;
+    margin: 0 auto 1rem;
+  }
+  .profile-photo {
+    width: 280px;
+    max-width: 70vw;
+  }
+}

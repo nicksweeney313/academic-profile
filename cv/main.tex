@@ -1,114 +1,162 @@
-\documentclass{resume} % Use the custom resume.cls style
+\documentclass{resume}
 
 \usepackage[left=0.4in,top=0.4in,right=0.4in,bottom=0.4in]{geometry}
-\usepackage[backend=biber,style=authoryear,sorting=ydnt,maxbibnames=99]{biblatex}
+\usepackage[hidelinks]{hyperref}
 
-\addbibresource{../bib/manual_publications.bib}
-\addbibresource{../bib/auto_publications.bib}
-\addbibresource{../bib/manual_working_papers.bib}
-\addbibresource{../bib/auto_working_papers.bib}
+\usepackage[backend=biber,style=authoryear,sorting=dateydnt,maxbibnames=99]{biblatex}
 
+% --- Sort newest first by full date (YYYY-MM-DD), then author, then title
+\DeclareSortingScheme{dateydnt}{%
+  \sort[direction=descending]{%
+    \field{sortdate}%
+    \field{date}%
+    \field{year}%
+  }%
+  \sort{\name{author}}%
+  \sort{\field{title}}%
+}
 
+% Use date if present (for sorting/labeling); fallback to year
+\DeclareLabeldate{%
+  \field{date}
+  \field{year}
+}
 
+% --- Force straight single quotes around ARTICLE titles
+% IMPORTANT: do NOT type any quotes into the .bib title field itself.
+\DeclareFieldFormat[article]{title}{`#1'}
 
+% --- DOI: show as clickable "DOI"
+\DeclareFieldFormat{doi}{%
+  \iffieldundef{doi}
+    {}
+    {\addspace\href{https://doi.org/#1}{\nolinkurl{DOI}}}%
+}
+
+% Strip "https://doi.org/" if you accidentally include it in the .bib
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=doi,
+            match=\regexp{^https?://(dx\.)?doi\.org/},
+            replace={}]
+    }
+  }
+}
+
+% --- Remove unwanted fields
+\AtEveryBibitem{%
+  \clearfield{month}%
+  \clearfield{day}%
+  \clearfield{urldate}%
+  \clearlist{language}%
+  \clearfield{issn}%
+  \clearfield{isbn}%
+}
+
+\renewbibmacro*{bbx:dashcheck}[2]{#2}
+\AtBeginBibliography{\raggedright}
+\setlength{\bibhang}{0pt}
+\setlength{\bibitemsep}{0.25\baselineskip}
+
+% --- Custom driver for journal articles
+% This guarantees you get: '...?'.
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}%
+  \space (\printfield{year})%
+  \space
+  \printfield{title}%
+  \addliteral{.}\space
+  \printfield{journaltitle}%
+  \adddot\space
+  \printfield{doi}%
+  \adddot\space
+  \printfield{note}%
+  \finentry
+}
+
+\renewbibmacro*{date+extradate}{%
+  \printlabeldateextra
+}
+
+\addbibresource{bib/publications.bib}
+\addbibresource{bib/working_papers.bib}
+
+% --- Name format: Surname, N. P.
+\DeclareNameAlias{author}{family-given}
+\DeclareNameAlias{editor}{family-given}
+\DeclareNameFormat{family-given}{%
+  \usebibmacro{name:family-given}%
+    {\namepartfamily}%
+    {\namepartgiveni}%
+    {\namepartprefix}%
+    {\namepartsuffix}%
+  \usebibmacro{name:andothers}%
+}
 
 
 \newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}} 
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 \name{Nicholas P. Sweeney} % Your name
 % You can merge both of these into a single line, if you do not have a website.
-\address{+447484673927 \\ Cambridge, United Kingdom} 
-\address{\href{mailto:nps34@cam.ac.uk}{Email} \\ 
-\href{https://www.landecon.cam.ac.uk/person/nicholas-sweeney}{Department Website} \\ 
-\href{https://www.linkedin.com/in/nick-sweeney-5ba33a147/}{LinkedIn}}  %
+\address{University of Manchester, United Kingdom} 
+\address{\href{mailto:nicholas.sweeney@manchester.ac.uk}{Email} \\ 
+\href{https://www.npsweeney.co.uk}{Website}}
 
 \begin{document}
 
 \nocite{*}
 
+\begin{rSection}{Current Employment}
+{\bf Fellow}, Alliance Manchester Business School, University of Manchester \hfill {2025 -- 2028}\\
+Three year appointment as the \textit{Sir Terry Leahy Fellow of Urban and Regional Economics}
+\end{rSection}
 
 \begin{rSection}{Publications}
-
-\printbibliography[keyword=publication,heading=none]
+\begin{refsection}[bib/publications.bib]
+\nocite{*}
+\printbibliography[heading=none]
+\end{refsection}
 \end{rSection}
+
 
 \begin{rSection}{Working papers}
-\printbibliography[keyword=workingpaper,heading=none]
+\begin{refsection}[bib/working_papers.bib]
+\nocite{*}
+\printbibliography[heading=none]
+\end{refsection}
 \end{rSection}
-
 
 
 \begin{rSection}{Education}
 
-{\bf Land Economy, PhD}, St Catharine's College, University of Cambridge \hfill {2022 - }\\
-\textit{In Progress} \\
+{\bf Land Economy, PhD}, St Catharine's College, University of Cambridge \hfill {2022 -- 2026 (expected)}\\
+\textit{In progress} \\
 \vspace{-1.5em}
- \begin{itemize}
-     \itemsep -3pt {} 
-    \item \textbf{Estimated completion:} Mid-late 2025 -- Working Title: \textit{`Devolution and Space in England'}
-    \begin{itemize}
-        \item \textbf{Paper 1:} \textit{`Devolution and Economic Growth in English `City-Regions' }(revise \& resubmit at \href{https://journals.sagepub.com/home/usj}{\textit{Urban Studies}})
-        \item \textbf{Paper 2:} \textit{`Devolution and Democratic Engagement in England'} (published in \href{https://www.sciencedirect.com/journal/political-geography}{\textit{Political Geography}})
-        \item \textbf{Paper 3:}  \textit{`Devolution, Health and Health Inequalities: Insights from the General Manchester Combined Authority'} (revise \& resubmit at  \href{https://www.sciencedirect.com/journal/social-science-and-medicine}{\textit{Social Science \& Medicine}})
-     \end{itemize}
-     \item \textbf{Funding:} Full stipend and fees from the Economic and Social Research Council \href{https://www.esrcdtp.group.cam.ac.uk}{Doctoral Training Partnership}
-     \item \textbf{Additional Papers:} 
-     \begin{itemize}
-         \item \textit{`Calculating Residential Distance Decay In England: A Postcode District Level Analysis'} (revise \& resubmit at \href{https://www.tandfonline.com/journals/rsea20}{\textit{Spatial Economic Analysis}})
-     \end{itemize}
- \end{itemize}
+\begin{itemize}
+  \itemsep -3pt {} 
+  \item \textbf{Thesis \& Funding:} `Devolution and Space in England: Empirical Essays on Economic Growth, Democratic Engagement and Health'; fully funded by the ESRC Doctoral Training Partnership
+\end{itemize}
 
-{\bf Land Economy by Research, MPhil}, Darwin College, University of Cambridge \hfill {2021 - 2022}\\
-\textit{Distinction} - 75\%\\
+{\bf Land Economy by Research, MPhil}, Darwin College, University of Cambridge \hfill {2021 -- 2022}\\
+\textit{Distinction} (75\%)\\
 \vspace{-1.5em}
- \begin{itemize}
-    \itemsep -3pt {} 
-    \item \textbf{Dissertation:} `\textit{A mixed methods analysis of neighbourhood-level migration determinants in London: Investigating origin neighbourhood amenities’ relationship to within-city migration decisions}' (75\%)
-    \item \textbf{Assessments:} Research methods (87\%), Social Sciences Research Methods (73\%), Spatial Analysis and Modelling (71\%)
-    \item \textbf{Funding:} £12,000 from \href{https://www.cambridgetrust.org/scholarships/}{Cambridge Trust} (Grace Goh Studentship)
- \end{itemize}
+\begin{itemize}
+  \itemsep -3pt {} 
+  \item \textbf{Awards \& Achievements:} £12,000 Cambridge Trust (Grace Goh Studentship); 87\% in Research Methods
+\end{itemize}
 
-{\bf Land Economy, BA}, Jesus College, University of Cambridge \hfill {2018 - 2021}\\
-\textit{Double First-class} - 73.4\% - most marks in cohort across all three years\\
+{\bf Land Economy, BA}, Jesus College, University of Cambridge \hfill {2018 -- 2021}\\
+\textit{Double First-class} (73.4\%) \\
 \vspace{-1.5em}
- \begin{itemize}
-     \itemsep -3pt {} 
-    \item \textbf{Part II: 73.4\% }
-     \begin{itemize}
-     \vspace{-.5em}
-     \itemsep -3pt {} 
-    \item \textbf{Dissertation: }`\textit{An investigation into reverse commuting patterns in Sweden: Reverse commuting as a proxy for the ‘consumer city’ hypothesis}'  (82\%)
-    \item \textbf{Papers:} Environmental Law and Economics (73\%), Planning Policy and Practice (73\%), Law and Economics (72\%), Development Economics (67\%)
-    \item \textbf{Awards:} The EMDF Dissertation Prize for best performance in the Dissertation, Jesus College Prize for Part II Land Economy and College Scholarship
-        \end{itemize}
-    \item \textbf{Part IB: 71.6\%}
-     \begin{itemize}
-     \vspace{-.5em}
-     \itemsep -3pt {} 
-    \item \textbf{Papers:} Private Law (75\%), The Built Environment (75\%), The Law of Real Property (73\%), Regional Economics and Policy (68\%), Land and Urban Economics (67\%)
-    \item \textbf{Awards:} CULS Prize for best overall performance in Part 1B, Jesus College prizes not awarded (COVID-19)
-        \end{itemize}
-    \item \textbf{Part IA: 71\%}
-    \begin{itemize}
-     \vspace{-.5em}
-     \itemsep -3pt {} 
-    \item \textbf{Papers:} Economics B (Macroeconomics) (76\%), Economics A (Microeconomics) (75\%), Constitutional Law (75\%), Quantitative and Legal Methods (70\%), Land Economy, Development and Sustainability (63\%)
-    \item \textbf{Awards:} 
-    Prize for best overall performance in Part IA, Prize for best performance in Economics papers
-        \end{itemize}
- \end{itemize}
-
- {\bf A-level}, Merchant Taylors' Boys' School, Crosby \hfill {2016 - 2018}\\
-\textbf{4 A*s} - Mathematics, Economics, History and Geography, awarded School Scholarship
-
-  {\bf GCSE}, Merchant Taylors' Boys' School, Crosby \hfill {2014 - 2016}\\
-\textbf{7 A*s} (including Mathematics and English) \& \textbf{2 As}, awarded Harrison Academic Scholarship
-
+\begin{itemize}
+  \itemsep -3pt {} 
+  \item \textbf{Awards \& Achievements:} Most marks in cohort across all three years; prizes for best final-year dissertation (82\%), best overall second-year performance (71.6\%), best overall  (71\%) and Economics, first-year performance
+\end{itemize}
 
 \end{rSection}
 
-\begin{rSection}{ACADEMIC WORK EXPERIENCE}
-
+\begin{rSection}{ACADEMIC EXPERIENCE}
 
 \textbf{University of Cambridge Interviewer} \hfill  \hfill 2022 -- \textit{Trinity Hall}  \& 2024 -- \textit{Sidney Sussex}
 \vspace{-0.5em}
@@ -157,7 +205,7 @@ Department of Land Economy \hfill \textit{Cambridge, UK}
 
 \end{rSection}
 
-\begin{rSection}{OTHER WORK EXPERIENCE}
+\begin{rSection}{OTHER EXPERIENCE}
 
  \textbf{Camp Director} \hfill\\
 -- Cambridge Summer Schools in China \hfill Summer 2023 -- \textit{Bali, Indonesia}
@@ -187,7 +235,7 @@ Department of Land Economy \hfill \textit{Cambridge, UK}
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
 Technical Skills &  Proficient in \textbf{Python}, \textbf{R},  \textbf{LaTeX}, \textbf{STATA}, intermediate in \textbf{QGIS}
 \\
-Soft Skills & Intermediate French language, public speaking, teamwork, leadership\\
+Communication & Intermediate French language\\
 \end{tabular}\\
 \end{rSection}
 

@@ -1,18 +1,23 @@
 ---
-title: "CV"
+title: "Curriculum Vitae"
+format:
+  html:
+    page-layout: full
+    toc: false
+    title-block-banner: false
+    title-block-style: plain
 ---
 
-# Curriculum Vitae
-
-<div style="text-align:center; margin-bottom: 1rem;">
-  <a href="./assets/cv.pdf" target="_blank" rel="noreferrer"><strong>Download CV (PDF)</strong></a>
-  <div id="last-updated" style="margin-top:.5rem; font-style: italic; opacity: .75;"></div>
+<div class="cv-actions">
+  <a class="cv-download" href="./assets/cv.pdf" target="_blank" rel="noreferrer"><strong>Download CV (PDF)</strong></a>
+  <div id="last-updated" class="cv-updated"></div>
 </div>
 
-<div style="display:flex; justify-content:center;">
+<div class="cv-frame-wrap">
   <iframe
+    class="cv-frame"
     src="./assets/cv.pdf#view=FitH"
-    style="width: 80%; height: 900px; border: none; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+    loading="lazy">
   </iframe>
 </div>
 
@@ -22,7 +27,8 @@ title: "CV"
     const api = "https://api.github.com/repos/nicksweeney313/academic-profile/commits?path=site/assets/cv.pdf&page=1&per_page=1";
     const res = await fetch(api);
     const data = await res.json();
-    const iso = data[0].commit.committer.date;
+    const iso = data?.[0]?.commit?.committer?.date;
+    if (!iso) throw new Error("No commit date");
     const d = new Date(iso);
     const formatted = d.toLocaleDateString("en-GB", { day:"2-digit", month:"long", year:"numeric" });
     document.getElementById("last-updated").textContent = `Last updated: ${formatted}`;
@@ -32,3 +38,33 @@ title: "CV"
 })();
 </script>
 
+<style>
+/* Reduce the big Quarto title spacing on this page */
+.quarto-title-block {
+  padding-top: 1rem !important;
+  padding-bottom: .5rem !important;
+  margin-bottom: .25rem !important;
+}
+.quarto-title-block .title {
+  margin-bottom: .25rem !important;
+}
+
+/* Link + updated date */
+.cv-actions { text-align: center; margin: .25rem 0 .75rem; }
+.cv-updated { margin-top: .35rem; font-style: italic; opacity: .75; }
+
+/* Make the PDF big */
+.cv-frame-wrap{
+  width: min(1100px, 92vw);   /* cap width */
+  margin: 0 auto;
+}
+
+.cv-frame{
+  width: 100%;
+  height: 85vh;              /* slightly shorter */
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+</style>

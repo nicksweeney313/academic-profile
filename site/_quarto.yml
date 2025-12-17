@@ -1,5 +1,7 @@
 project:
   type: website
+  resources:
+  - assets/
   output-dir: _site
 
 website:
@@ -9,12 +11,11 @@ website:
       - text: "About"
         href: index.qmd
       - text: "Publications"
-        href: publications.json
+        href: publications.qmd
       - text: "CV"
         href: cv.qmd
       - text: "Contact"
         href: contact.qmd
-
 
 format:
   html:

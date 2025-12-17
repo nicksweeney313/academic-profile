@@ -1,8 +1,38 @@
 ---
 title: "Contact"
----
-Email: [nick@npsweeney.co.uk](mailto:nick@npsweeney.co.uk)
+format:
+  html:
+    toc: false
 
-- GitHub: …
-- Google Scholar: …
-- ORCID: …
+---
+
+## Emails
+
+- **Academic**  
+  [nicholas.sweeney@manchester.ac.uk](mailto:nicholas.sweeney@manchester.ac.uk)
+
+- **General enquiries**  
+  [general@npsweeney.co.uk](mailto:general@npsweeney.co.uk)
+
+- **Consulting & advisory work**  
+  [consulting@npsweeney.co.uk](mailto:consulting@npsweeney.co.uk)
+
+
+## Profiles
+
+- <a href="https://scholar.google.com/citations?user=_tCzIOIAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">
+  Google Scholar
+  </a>
+
+- <a href="https://orcid.org/0000-0001-9349-5863" target="_blank" rel="noopener">
+  ORCID
+  </a>
+
+- <a href="https://github.com/nicksweeney313" target="_blank" rel="noopener">
+  GitHub
+  </a>
+
+- <a href="https://bsky.app/profile/npsweeney.bsky.social" target="_blank" rel="noopener">
+  Bluesky
+  </a>
+

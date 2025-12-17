@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CV – Nicholas P. Sweeney</title>
+<title>Curriculum Vitae – Nicholas P. Sweeney</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7bfe934728b598ff50c0e2e8d6e038d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.json"> 
+    <a class="nav-link" href="./publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
@@ -114,21 +114,21 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">CV</h1>
+<h1 class="title">Curriculum Vitae</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -140,16 +140,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="curriculum-vitae" class="level1">
-<h1>Curriculum Vitae</h1>
-<div style="text-align:center; margin-bottom: 1rem;">
-<a href="./assets/cv.pdf" target="_blank" rel="noreferrer"><strong>Download CV (PDF)</strong></a>
-<div id="last-updated" style="margin-top:.5rem; font-style: italic; opacity: .75;">
+<div class="cv-actions">
+<a class="cv-download" href="./assets/cv.pdf" target="_blank" rel="noreferrer"><strong>Download CV (PDF)</strong></a>
+<div id="last-updated" class="cv-updated">
 
 </div>
 </div>
-<div style="display:flex; justify-content:center;">
-<p><iframe src="./assets/cv.pdf#view=FitH" style="width: 80%; height: 900px; border: none; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"> </iframe></p>
+<div class="cv-frame-wrap">
+<p><iframe class="cv-frame" src="./assets/cv.pdf#view=FitH" loading="lazy"> </iframe></p>
 </div>
 <script>
 (async () => {
@@ -157,7 +155,8 @@ ul.task-list li input[type="checkbox"] {
     const api = "https://api.github.com/repos/nicksweeney313/academic-profile/commits?path=site/assets/cv.pdf&page=1&per_page=1";
     const res = await fetch(api);
     const data = await res.json();
-    const iso = data[0].commit.committer.date;
+    const iso = data?.[0]?.commit?.committer?.date;
+    if (!iso) throw new Error("No commit date");
     const d = new Date(iso);
     const formatted = d.toLocaleDateString("en-GB", { day:"2-digit", month:"long", year:"numeric" });
     document.getElementById("last-updated").textContent = `Last updated: ${formatted}`;
@@ -166,9 +165,38 @@ ul.task-list li input[type="checkbox"] {
   }
 })();
 </script>
+<style>
+/* Reduce the big Quarto title spacing on this page */
+.quarto-title-block {
+  padding-top: 1rem !important;
+  padding-bottom: .5rem !important;
+  margin-bottom: .25rem !important;
+}
+.quarto-title-block .title {
+  margin-bottom: .25rem !important;
+}
+
+/* Link + updated date */
+.cv-actions { text-align: center; margin: .25rem 0 .75rem; }
+.cv-updated { margin-top: .35rem; font-style: italic; opacity: .75; }
+
+/* Make the PDF big */
+.cv-frame-wrap{
+  width: min(1100px, 92vw);   /* cap width */
+  margin: 0 auto;
+}
+
+.cv-frame{
+  width: 100%;
+  height: 85vh;              /* slightly shorter */
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+</style>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

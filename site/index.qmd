@@ -1,10 +1,32 @@
 ---
 title: "Nicholas P. Sweeney"
+format:
+  html:
+    toc: false
 ---
 
-## Economic geography · Regional economics · Place-based policy
+## Economic geography · Regional inequalities · Institutions
 
-I am a PhD researcher in the Department of Land Economy at the University of Cambridge. My work sits at the intersection of **economic geography**, **regional economics**, and **place-based policy**, with a focus on England.
+<div class="profile-wrap">
+  <a href="assets/DSC_1243.jpg" target="_blank" rel="noopener" class="profile-link">
+    <img src="assets/DSC_1243.jpg"
+         alt="Nicholas P. Sweeney"
+         class="profile-photo">
+  </a>
+</div>
+
+### Bio
+
+*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.
+
+His research specialises in *XXX*.
+
+He joined the University of Manchester in 2025 from the University of Cambridge, after a PhD entitled 'Devolution and Space in England: Empirical Essays on Economic Growth, Democratic Engagement and Health'. The thesis comprised three solo-authored papers, submitted in under three years, and subsequently published in leading journals (*Urban Studies*, *Political Geography*, and *Social Science & Medicine*).
+
+Nicholas also completed his undergraduate and master’s degrees at the University of Cambridge, specialising in Economic Geography. His earlier academic achievements include a master’s degree with Distinction, including a mark of 87% in Research Methods, and—at undergraduate level—the highest overall marks in his cohort and the award for Best Final-Year Dissertation.
+
+Outside of academic work, Nicholas has focused on contributing in policy domains, holding positions at the OECD, working on the ASEAN Development Outlook Report 2020-2025 and MillNET_i.
+
 
 ### Research interests
 - Devolution and multi-level governance
@@ -21,8 +43,3 @@ I am a PhD researcher in the Department of Land Economy at the University of Cam
 ### Selected work
 - See **Publications** for papers and working papers.
 - See **CV** for a full academic CV (PDF).
-
-### Contact
-- Email: `nicholas@npsweeney.co.uk` (or your current preferred email)
-- Department page: add link here
-- Google Scholar / ORCID / GitHub: add links here
