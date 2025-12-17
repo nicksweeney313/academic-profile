@@ -9,31 +9,26 @@ permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build-cv:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        - name: Install TeX
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended biber latexmk
 
-      - name: Install TeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended biber latexmk
+        - name: Build CV
+          run: |
+            cd cv
+            latexmk -pdf -interaction=nonstopmode -halt-on-error -bibtex -jobname=main main.tex
 
-      - name: Build CV
-        run: |
-          cd cv
-          latexmk -pdf -interaction=nonstopmode -halt-on-error -use-biber main.tex
-
-
-      - name: Copy PDF into site assets
-        run: |
-          mkdir -p site/assets
-          cp cv/main.pdf site/assets/cv.pdf
-
+        - name: Copy PDF into site assets
+          run: |
+            mkdir -p site/assets
+            cp cv/main.pdf site/assets/cv.pdf
+  deploy:
       # ---- Build the Quarto site ----
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
