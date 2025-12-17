@@ -22,33 +22,25 @@ jobs:
             texlive-fonts-recommended biber latexmk
 
       - name: Build CV
-        run: |
-          cd cv
-          # 1st pass
-          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
 
-          # Run bibliography tool if needed (biblatex -> biber; classic -> bibtex)
-          if grep -q "\\\\usepackage\\(\\[.*\\]\\)\\?{biblatex}" main.tex; then
-            biber main || true
-          else
-            bibtex main || true
-          fi
+          - name: Install TeX
+            run: |
+              sudo apt-get update
+              sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended biber latexmk
 
-          # Final passes
-          pdflatex -interaction=nonstopmode -halt-on-error main.tex
-          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          - name: Build CV
+            run: |
+              cd cv
+              latexmk -pdf -interaction=nonstopmode -halt-on-error -bibtex -jobname=main main.tex
 
+          - name: Copy PDF into site assets
+            run: |
+              mkdir -p site/assets
+              cp cv/main.pdf site/assets/cv.pdf
 
-      - name: Copy PDF into site assets
-        run: |
-          mkdir -p site/assets
-          cp cv/main.pdf site/assets/cv.pdf
-
-      - name: Upload CV PDF (artifact)
-        uses: actions/upload-artifact@v4
-        with:
-          name: cv-pdf
-          path: site/assets/cv.pdf
 
   deploy:
     runs-on: ubuntu-latest
