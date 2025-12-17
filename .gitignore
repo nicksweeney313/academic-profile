@@ -9,3 +9,9 @@ __pycache__/
 site/_site/
 .DS_Store
 .DS_Store
+
+# Quarto build output
+site/_site/
+site/.nojekyll
+.DS_Store
+
