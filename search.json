@@ -1,31 +1,10 @@
 [
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum Vitae",
     "section": "",
-    "text": "Journal articles and related outputs. Click the column headers to sort."
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "Academic\nnicholas.sweeney@manchester.ac.uk\nGeneral enquiries\ngeneral@npsweeney.co.uk\nConsulting & advisory work\nconsulting@npsweeney.co.uk"
-  },
-  {
-    "objectID": "contact.html#emails",
-    "href": "contact.html#emails",
-    "title": "Contact",
-    "section": "",
-    "text": "Academic\nnicholas.sweeney@manchester.ac.uk\nGeneral enquiries\ngeneral@npsweeney.co.uk\nConsulting & advisory work\nconsulting@npsweeney.co.uk"
-  },
-  {
-    "objectID": "contact.html#profiles",
-    "href": "contact.html#profiles",
-    "title": "Contact",
-    "section": "Profiles",
-    "text": "Profiles\n\n Google Scholar \n ORCID \n GitHub \n Bluesky"
+    "text": "Download CV (PDF)"
   },
   {
     "objectID": "index.html",
@@ -49,10 +28,31 @@
     "text": "Nicholas P. Sweeney is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.\nHis research specialises in XXX."
   },
   {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Curriculum Vitae",
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
     "section": "",
-    "text": "Download CV (PDF)"
+    "text": "Academic\nnicholas.sweeney@manchester.ac.uk\nGeneral enquiries\ngeneral@npsweeney.co.uk\nConsulting & advisory work\nconsulting@npsweeney.co.uk"
+  },
+  {
+    "objectID": "contact.html#emails",
+    "href": "contact.html#emails",
+    "title": "Contact",
+    "section": "",
+    "text": "Academic\nnicholas.sweeney@manchester.ac.uk\nGeneral enquiries\ngeneral@npsweeney.co.uk\nConsulting & advisory work\nconsulting@npsweeney.co.uk"
+  },
+  {
+    "objectID": "contact.html#profiles",
+    "href": "contact.html#profiles",
+    "title": "Contact",
+    "section": "Profiles",
+    "text": "Profiles\n\n Google Scholar \n ORCID \n GitHub \n Bluesky"
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Journal articles and related outputs. Click the column headers to sort."
   }
 ]
