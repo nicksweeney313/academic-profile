@@ -8,3 +8,4 @@ __pycache__/
 # Build output + OS junk
 site/_site/
 .DS_Store
+.DS_Store
