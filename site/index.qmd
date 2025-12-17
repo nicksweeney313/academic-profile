@@ -30,6 +30,8 @@ His research specialises in *XXX*.
 
 
 
+### Research interests
+- Multi-level governance and decentraliastion
 
 ### Research interests
 - Multi-level governance and decentraliastion
@@ -41,7 +43,3 @@ His research specialises in *XXX*.
 - Causal inference in applied microeconometrics (e.g. difference-in-differences, matching, IV)
 - Spatial data and geospatial analysis (QGIS / GIS workflows)
 - Reproducible research in **R** and **Python**
-
-### Selected work
-- See **Publications** for papers and working papers.
-- See **CV** for a full academic CV (PDF).
