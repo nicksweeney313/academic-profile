@@ -61,7 +61,7 @@ def main():
     # Force-with-lease to handle non-fast-forward deploy updates safely
     run(["git", "push", "--force-with-lease", "origin", "gh-pages"], cwd=GHPAGES_WORKTREE)
 
-    print("\n✅ Done. Hard refresh https://npsweeney.co.uk (Cmd+Shift+R).")
+    print("\n Done. Hard refresh https://npsweeney.co.uk (Cmd+Shift+R).")
 
 if __name__ == "__main__":
     try:
