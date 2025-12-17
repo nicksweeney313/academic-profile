@@ -24,10 +24,6 @@ jobs:
           python -m pip install -U pip
           pip install -r requirements.txt
 
-      - name: Update publications
-        run: |
-          python scripts/update_pubs.py
-
       - name: Commit updated files
         run: |
           git config user.name "pubs-bot"
