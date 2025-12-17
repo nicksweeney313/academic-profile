@@ -1,0 +1,54 @@
+name: Build CV + Deploy site
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ---- Build the CV (LaTeX) ----
+      - name: Build CV PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: cv
+          root_file: main.tex
+
+      - name: Copy CV into site assets
+        run: |
+          mkdir -p site/assets
+          cp cv/main.pdf site/assets/cv.pdf
+
+      # ---- Build the Quarto site ----
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render site
+        run: |
+          cd site
+          quarto render
+
+      # Ensure custom domain is preserved (CNAME must exist in published branch root)
+      - name: Add CNAME to output
+        run: |
+          echo "npsweeney.co.uk" > site/_site/CNAME
+
+      # ---- Deploy to gh-pages ----
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: site/_site
+          force_orphan: true
