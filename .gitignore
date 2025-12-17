@@ -15,3 +15,12 @@ site/_site/
 site/.nojekyll
 .DS_Store
 
+
+# Quarto build output + OS junk
+site/_site/
+site/.nojekyll
+.DS_Store
+.venv/
+venv/
+__pycache__/
+*.pyc
