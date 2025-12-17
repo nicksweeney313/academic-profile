@@ -8,8 +8,6 @@
 \addbibresource{../bib/publications.bib}
 \addbibresource{../bib/working_papers.bib}
 
-\providecommand*{\addliteral}[1]{\addpunct{#1}}
-
 % --- Sort newest first by full date (YYYY-MM-DD), then author, then title
 \DeclareSortingScheme{dateydnt}{%
   \sort[direction=descending]{%
@@ -71,7 +69,7 @@
   \space (\printfield{year})%
   \space
   \printfield{title}%
-  \addliteral{.}\space
+  \setunit{\adddot\space}
   \printfield{journaltitle}%
   \adddot\space
   \printfield{doi}%
